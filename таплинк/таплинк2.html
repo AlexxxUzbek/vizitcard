@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Олеся | Визитка</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #ffffff;
+            --text-secondary: #888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--accent);
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 15px;
+            grid-auto-rows: minmax(100px, auto);
+        }
+
+        /* Общие стили карточек */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Заглавная карточка (Аватар + Имя) */
+        .card-main {
+            grid-column: span 2;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: url('avatar.jpg') center/cover; 
+            border: 2px solid var(--border);
+            background-color: #222; /* Цвет заглушки, пока нет фото */
+        }
+        .info h1 { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.02em; text-transform: uppercase; }
+        .info p { color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px; }
+
+        /* Сфера деятельности */
+        .card-tag {
+            grid-column: span 2;
+            text-align: center;
+            background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+        }
+        .tag-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-secondary); margin-bottom: 8px; }
+        .tag-value { font-size: 1rem; font-weight: 300; line-height: 1.4; }
+
+        /* Контакты */
+        .card-contact {
+            text-decoration: none;
+            color: inherit;
+            align-items: center;
+            text-align: center;
+        }
+        .contact-label { font-size: 0.85rem; font-weight: 400; letter-spacing: 0.05em; }
+
+        /* Кнопка сохранения контакта */
+        .btn-save {
+            grid-column: span 2;
+            background: var(--accent);
+            color: var(--bg);
+            text-decoration: none;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            border-radius: 24px;
+            padding: 20px;
+            transition: transform 0.3s ease, opacity 0.9s ease;
+        }
+        .btn-save:hover {
+            transform: translateY(-5px);
+            opacity: 0.9;
+        }
+
+        /* Фото работ (Галерея) */
+        .card-work {
+            grid-column: span 1;
+            height: 150px;
+            padding: 0;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        .card-work img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .card-work:hover img { transform: scale(1.1); }
+
+        .full-width { grid-column: span 2; }
+
+        /* Футер */
+        .footer {
+            grid-column: span 2;
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            padding: 20px 0 40px;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="card card-main">
+            <div class="avatar"></div>
+            <div class="info">
+                <h1>ОЛЕСЯ</h1>
+                <p>prostorremonta.ru</p>
+            </div>
+        </div>
+
+        <div class="card card-tag">
+            <div class="tag-label">Специализация</div>
+            <div class="tag-value">Отделочные стройматериалы<br>по лучшей цене</div>
+        </div>
+
+        <a href="tel:+79185042117" class="card card-contact">
+            <span style="font-size: 1.4rem; margin-bottom: 8px;">📞</span>
+            <span class="contact-label">Позвонить</span>
+        </a>
+        <a href="mailto:ole-uzbek@yandex.ru" class="card card-contact">
+            <span style="font-size: 1.4rem; margin-bottom: 8px;">✉️</span>
+            <span class="contact-label">Написать</span>
+        </a>
+
+        <a href="contact.vcf" download class="btn-save">
+            <span style="font-size: 1.2rem;">📥</span>
+            <span style="font-weight: 600; letter-spacing: 0.05em; font-size: 0.9rem;">СОХРАНИТЬ КОНТАКТ</span>
+        </a>
+
+        <div class="card-tag full-width" style="border: none; padding-bottom: 0; background: transparent;">
+            <div class="tag-label">Примеры работ</div>
+        </div>
+
+        <div class="card card-work">
+            <img src="work1.jpg" alt="Работа 1">
+        </div>
+        <div class="card card-work">
+            <img src="work2.jpg" alt="Работа 2">
+        </div>
+        <div class="card card-work">
+            <img src="work3.jpg" alt="Работа 3">
+        </div>
+        <div class="card card-work">
+            <img src="work4.jpg" alt="Работа 4">
+        </div>
+
+        <div class="footer">
+            &copy; 2026 PROSTOR REMONTA
+        </div>
+
+    </div>
+
+</body>
+</html>
